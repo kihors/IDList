@@ -7,17 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		253014142419712B00428682 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253014132419712B00428682 /* Student.swift */; };
+		25301416241976A800428682 /* StudentsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25301415241976A800428682 /* StudentsContainer.swift */; };
 		253E519A240FE64C0012E53E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253E5199240FE64C0012E53E /* AppDelegate.swift */; };
 		253E519E240FE64C0012E53E /* StudentAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253E519D240FE64C0012E53E /* StudentAddViewController.swift */; };
 		253E51A1240FE64C0012E53E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 253E519F240FE64C0012E53E /* Main.storyboard */; };
 		253E51A3240FE64E0012E53E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 253E51A2240FE64E0012E53E /* Assets.xcassets */; };
 		253E51A6240FE64E0012E53E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 253E51A4240FE64E0012E53E /* LaunchScreen.storyboard */; };
 		25C12A8B24191AC9003D65E1 /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C12A8A24191AC9003D65E1 /* StudentTableViewCell.swift */; };
-		25C12A8D241940F5003D65E1 /* StudentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C12A8C241940F5003D65E1 /* StudentsViewController.swift */; };
+		25D8A97524201A3C00383EEB /* StudentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D8A97424201A3C00383EEB /* StudentTableViewController.swift */; };
 		25EF8ADD2412A0A5005249A5 /* students.json in Resources */ = {isa = PBXBuildFile; fileRef = 25EF8ADC2412A0A5005249A5 /* students.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		253014132419712B00428682 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		25301415241976A800428682 /* StudentsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsContainer.swift; sourceTree = "<group>"; };
 		253E5196240FE64C0012E53E /* IDList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		253E5199240FE64C0012E53E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		253E519D240FE64C0012E53E /* StudentAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAddViewController.swift; sourceTree = "<group>"; };
@@ -26,7 +30,7 @@
 		253E51A5240FE64E0012E53E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		253E51A7240FE64E0012E53E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25C12A8A24191AC9003D65E1 /* StudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTableViewCell.swift; sourceTree = "<group>"; };
-		25C12A8C241940F5003D65E1 /* StudentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsViewController.swift; sourceTree = "<group>"; };
+		25D8A97424201A3C00383EEB /* StudentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTableViewController.swift; sourceTree = "<group>"; };
 		25EF8ADC2412A0A5005249A5 /* students.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = students.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,9 +65,11 @@
 			isa = PBXGroup;
 			children = (
 				253E5199240FE64C0012E53E /* AppDelegate.swift */,
-				25C12A8C241940F5003D65E1 /* StudentsViewController.swift */,
 				253E519D240FE64C0012E53E /* StudentAddViewController.swift */,
 				25C12A8A24191AC9003D65E1 /* StudentTableViewCell.swift */,
+				25D8A97424201A3C00383EEB /* StudentTableViewController.swift */,
+				25301415241976A800428682 /* StudentsContainer.swift */,
+				253014132419712B00428682 /* Student.swift */,
 				253E519F240FE64C0012E53E /* Main.storyboard */,
 				253E51A2240FE64E0012E53E /* Assets.xcassets */,
 				253E51A4240FE64E0012E53E /* LaunchScreen.storyboard */,
@@ -145,9 +151,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25C12A8D241940F5003D65E1 /* StudentsViewController.swift in Sources */,
+				25301416241976A800428682 /* StudentsContainer.swift in Sources */,
 				253E519E240FE64C0012E53E /* StudentAddViewController.swift in Sources */,
+				25D8A97524201A3C00383EEB /* StudentTableViewController.swift in Sources */,
 				253E519A240FE64C0012E53E /* AppDelegate.swift in Sources */,
+				253014142419712B00428682 /* Student.swift in Sources */,
 				25C12A8B24191AC9003D65E1 /* StudentTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
