@@ -11,22 +11,19 @@ import UIKit
 class StudentTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, StudentAddViewControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var averageAgeLabel: UILabel!
     
     func newStudent(student: Student) {
         students.append(student)
         tableView.reloadData()
+        
+        averageAgeLabel.text = String(format: "%.2f", √students)
     }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        //loadSampleStudents()
     }
     
     var students = [Student]()
@@ -37,7 +34,7 @@ class StudentTableViewController: UIViewController, UITableViewDataSource, UITab
         // #warning Incomplete implementation, return the number of rows
         return students.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
@@ -46,8 +43,6 @@ class StudentTableViewController: UIViewController, UITableViewDataSource, UITab
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? StudentTableViewCell else {
             fatalError("The dequeued cell is not an instance of StudentTableViewCell.")
         }
-        
-        
         
         let student = students[indexPath.row]
         
@@ -58,17 +53,20 @@ class StudentTableViewController: UIViewController, UITableViewDataSource, UITab
         return cell
     }
     
-
-//    private func loadSampleStudents() {
-//        let student1 = Student(name: "Ihor", age: 31, gender: .male)
-//        let student2 = Student(name: "Daria", age: 26, gender: .female)
-//        students += [student1, student2]
-//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? StudentAddViewController {
             viewController.delegate = self
         }
     }
+    
+    
 
 }
+
+prefix operator √
+prefix func √(students: [Student]) -> Double {
+    let averageAge = students.reduce(0) { $0 + $1.age }
+    return Double(averageAge) / Double(students.count)
+}
+
