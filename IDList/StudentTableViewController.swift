@@ -20,16 +20,15 @@ class StudentTableViewController: UIViewController, UITableViewDataSource, UITab
         averageAgeLabel.text = String(format: "%.2f", √students)
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     var students = [Student]()
-
+    
     // MARK: - Table view data source
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return students.count
@@ -37,7 +36,7 @@ class StudentTableViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        
         let cellIdentifier = "StudentTableViewCell"
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? StudentTableViewCell else {
@@ -49,10 +48,9 @@ class StudentTableViewController: UIViewController, UITableViewDataSource, UITab
         cell.nameLabel.text = student.name
         cell.ageLabel.text = String(student.age)
         cell.genderLabel.text = student.gender.rawValue
-
+        
         return cell
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? StudentAddViewController {
@@ -60,8 +58,6 @@ class StudentTableViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
-    
-
 }
 
 prefix operator √
