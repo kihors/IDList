@@ -22,7 +22,10 @@
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="GWN-DD-nrf">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" textContentType="name"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="PPa-qK-dTy" id="avP-Gb-pKE"/>
+                                    </connections>
                                 </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentTableViewCell" rowHeight="120" id="3ii-Uk-WoX" customClass="StudentTableViewCell" customModule="IDList" customModuleProvider="target">
@@ -170,6 +173,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="averageAgeLabel" destination="lbz-tW-54N" id="w4o-6T-4il"/>
+                        <outlet property="searchByName" destination="GWN-DD-nrf" id="3b1-OS-dbw"/>
                         <outlet property="tableView" destination="Pjd-8X-OAh" id="h06-Mj-lXT"/>
                     </connections>
                 </viewController>

@@ -12,10 +12,11 @@ class StudentTableViewController: UIViewController, UITableViewDataSource, UITab
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var averageAgeLabel: UILabel!
+    @IBOutlet weak var searchByName: UISearchBar!
     
     func newStudent(student: Student) {
-        students.append(student)
-        tableView.reloadData()
+        allStudents.append(student)
+        refresh()
         
         averageAgeLabel.text = String(format: "%.2f", √students)
     }
@@ -26,6 +27,7 @@ class StudentTableViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     var students = [Student]()
+    var allStudents = [Student]()
     
     // MARK: - Table view data source
     
@@ -58,11 +60,24 @@ class StudentTableViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
+    func refresh() {
+        students = allStudents.filter { $0.name.starts(with: searchByName.text ?? "") }.sorted { $0.name < $1.name }
+        tableView.reloadData()
+    }
+    
 }
 
 prefix operator √
 prefix func √(students: [Student]) -> Double {
     let averageAge = students.reduce(0) { $0 + $1.age }
     return Double(averageAge) / Double(students.count)
+}
+
+extension StudentTableViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        refresh()
+    }
+    
 }
 
