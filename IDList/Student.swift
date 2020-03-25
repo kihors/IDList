@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct Student {
+struct Student: Equatable, Decodable {
     let name: String
     let age: Int
     let gender: Gender
     
 }
 
-enum Gender: String {
+enum Gender: String, Decodable {
     case male
     case female
 }

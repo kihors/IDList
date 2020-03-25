@@ -23,10 +23,7 @@ class StudentAddViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var saveButton: UIButton!
     
     
-    
     weak var delegate: StudentAddViewControllerDelegate?
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,21 +32,25 @@ class StudentAddViewController: UIViewController, UITextFieldDelegate {
         ageTextField.delegate = self
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let name = nameTextField.text, !name.isEmpty {
+            if let age = ageTextField.text, !age.isEmpty {
+                saveButton.isEnabled = true
+            } else {
+                saveButton.isEnabled = false
+            }
+        } else {
+            saveButton.isEnabled = false
+        }
         return true
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        saveButton.isEnabled = true
     }
     
     
     //MARK: Action
     @IBAction func saveButton(_ sender: UIButton) {
         
-        guard let name = nameTextField.text else { return saveButton.isEnabled = false }
-        guard let age = Int(ageTextField.text!) else { return saveButton.isEnabled = false }
+        guard let name = nameTextField.text else { return }
+        guard let age = Int(ageTextField.text!) else { return }
         let gender = genderSegmentedControl.selectedSegmentIndex == 0 ? Gender.male : Gender.female
 
         let student = Student(name: name, age: age, gender: gender)

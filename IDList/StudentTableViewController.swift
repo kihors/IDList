@@ -15,10 +15,10 @@ class StudentTableViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var searchByName: UISearchBar!
     
     func newStudent(student: Student) {
-        allStudents.append(student)
+        container.append(student)
         refresh()
         
-        averageAgeLabel.text = String(format: "%.2f", √students)
+        
     }
     
     override func viewDidLoad() {
@@ -26,14 +26,14 @@ class StudentTableViewController: UIViewController, UITableViewDataSource, UITab
         
     }
     
-    var students = [Student]()
-    var allStudents = [Student]()
+    private var container = StudentsContainer()
+    private var filteredStudents = [Student]()
     
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return students.count
+        return filteredStudents.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,7 +45,7 @@ class StudentTableViewController: UIViewController, UITableViewDataSource, UITab
             fatalError("The dequeued cell is not an instance of StudentTableViewCell.")
         }
         
-        let student = students[indexPath.row]
+        let student = filteredStudents[indexPath.row]
         
         cell.nameLabel.text = student.name
         cell.ageLabel.text = String(student.age)
@@ -61,7 +61,8 @@ class StudentTableViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func refresh() {
-        students = allStudents.filter { $0.name.starts(with: searchByName.text ?? "") }.sorted { $0.name < $1.name }
+        filteredStudents = container.filteredStudents(by: searchByName.text)
+        averageAgeLabel.text = String(format: "%.2f", √filteredStudents)
         tableView.reloadData()
     }
     
