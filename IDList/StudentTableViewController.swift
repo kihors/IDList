@@ -23,7 +23,17 @@ class StudentTableViewController: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if let builder = StudentsBuilder() {
+            do {
+                let items = try builder.build()
+                for item in items {
+                    container.append(item)
+                }
+                refresh()
+            } catch {
+                print(error)
+            }
+        }
     }
     
     private var container = StudentsContainer()
