@@ -28,23 +28,27 @@ class StudentAddViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nameTextField.delegate = self
-        ageTextField.delegate = self
+//        nameTextField.delegate = self
+//        ageTextField.delegate = self
+//        saveButton.isEnabled = false
+        validate()
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let name = nameTextField.text, !name.isEmpty {
-            if let age = ageTextField.text, !age.isEmpty {
-                saveButton.isEnabled = true
-            } else {
-                saveButton.isEnabled = false
-            }
-        } else {
-            saveButton.isEnabled = false
-        }
-        return true
+    @IBAction func onNameChanged(_ sender: UITextField) {
+        validate()
     }
     
+    @IBAction func onAgeChanged(_ sender: UITextField) {
+        validate()
+    }
+    
+    private func validate() {
+        let name = nameTextField.text ?? ""
+        let age  = ageTextField.text ?? ""
+        
+        saveButton.isEnabled = !name.isEmpty && !age.isEmpty
+        saveButton.alpha = saveButton.isEnabled ? 1.0 : 0.5
+    }
     
     //MARK: Action
     @IBAction func saveButton(_ sender: UIButton) {
