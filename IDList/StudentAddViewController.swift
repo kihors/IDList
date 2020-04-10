@@ -31,6 +31,7 @@ class StudentAddViewController: UIViewController, UITextFieldDelegate {
 //        nameTextField.delegate = self
 //        ageTextField.delegate = self
 //        saveButton.isEnabled = false
+        saveButton.layer.cornerRadius = 8
         validate()
     }
     

@@ -59,6 +59,8 @@ class StudentTableViewController: UIViewController, UITableViewDataSource, UITab
         cell.nameLabel.text = student.name
         cell.ageLabel.text = String(student.age)
         cell.genderLabel.text = student.gender.rawValue
+        cell.viewCellContent.layer.cornerRadius = 8
+        cell.layer.cornerRadius = 8
         
         return cell
     }
